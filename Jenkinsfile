@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "yourdockerhubusername/calculator"
+        DOCKER_IMAGE = "gayathri731/calculator"
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/yourusername/your-repo.git'
+                git 'https://github.com/GayathriIIIT/miniproject.git'
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
 
         stage('Run Unit Tests') {
             steps {
-                sh 'python -m unittest test_calculator.py'
+                sh 'python3 -m unittest test_calculator.py'
             }
         }
 
