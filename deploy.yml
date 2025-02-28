@@ -1,0 +1,25 @@
+- hosts: managed_hosts
+  become: yes
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Start Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Pull latest Docker image
+      command: docker pull gayathri731/calculator
+
+    - name: Remove old container if exists
+      command: docker rm -f calculator || true
+
+    - name: Run new container
+      command: >
+        docker run -d --name calculator gayathri731/calculator python3 /app/calculator.py
+
