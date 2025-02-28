@@ -34,7 +34,7 @@ pipeline {
             steps {
                 withDockerRegistry([ credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/' ]) {
     sh 'docker push gayathri731/calculator:latest'
-}
+
 
                 }
             }
